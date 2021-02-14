@@ -1,2 +1,0 @@
-Link:
-https://login.eveonline.com/oauth/authorize?response_type=code&redirect_uri=https://github.com/Changeme-NUL/EVEterm/wiki/Post-authentication&client_id=a2c6fb5fa9a3400b81eef46ea8b9c980&scope=esi-skills.read_skillqueue.v1
