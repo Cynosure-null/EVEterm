@@ -25,7 +25,7 @@ from shared_flow import send_token_request
 from shared_flow import handle_sso_token_response
 
 
-def main():
+def auth():
     """ Takes you through a local example of the OAuth 2.0 native flow."""
 
     print("This program will take you through an example OAuth 2.0 flow "
@@ -39,8 +39,7 @@ def main():
     d = m.digest()
     code_challenge = base64.urlsafe_b64encode(d).decode().replace("=", "")
 
-    client_id = input("Copy your SSO application's client ID and enter it "
-                      "here: ")
+    client_id = "a2c6fb5fa9a3400b81eef46ea8b9c980"
 
     print("\nBecause this is a desktop/mobile application, you should use "
           "the PKCE protocol when contacting the EVE SSO. In this case, that "
@@ -82,4 +81,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    auth()
