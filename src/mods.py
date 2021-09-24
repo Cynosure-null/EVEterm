@@ -14,6 +14,8 @@ def ServerInfo():
 def NoAuthRequest():
     Nar_url = requests.get(lonk)
 """
+def null():
+    None
 
 def sh():
     ShellInput = input("$ ")
