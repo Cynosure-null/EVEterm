@@ -16,7 +16,7 @@ def zzz(seconds):
 #put history files here if I screw up the echo ShIn > historyswp.txt manuver
 #I forgot it's three lines. Not bloat
 def HistoryADD():
-    STRhistory = "echo {} >> .EVEterm/.history"
+    STRhistory = "echo {} >> .EVEterm/history"
     STRhistory = STRhistory.format(ShIn)
     os.system(STRhistory)
 
@@ -77,10 +77,10 @@ if randint =="2":
 
 
 while True:
-    if ListHistory == True and devmode == True:
-        HistoryADD()
-    else:
         ShIn = input(ShWelcome)
+
+        if ListHistory == True and devmode == True:
+            HistoryADD()
 
         if ShIn == "help":
             print(HelpTxt)
@@ -162,8 +162,7 @@ while True:
         elif ShIn == "quit":
             break
         elif ShIn == None:
-            #foo
-            foo = "fighters"
+            mods.null()
 
 
         #I don't know why this is buggy. It just is. EDIT: not longer buggy!
