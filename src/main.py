@@ -7,6 +7,7 @@ import mods
 import random
 from auth import *
 import json
+import calls
 from config import *
 
 
@@ -77,100 +78,101 @@ if randint =="2":
 
 
 while True:
-        ShIn = input(ShWelcome)
+    ShIn = None
+    ShIn = input(ShWelcome)
 
-        if ListHistory == True and devmode == True:
-            HistoryADD()
+    if ListHistory == True and devmode == True:
+        HistoryADD()
 
-        if ShIn == "help":
-            print(HelpTxt)
+    if ShIn == "help":
+        print(HelpTxt)
 
-        elif ShIn == "server":
-            ut = requests.get("https://esi.evetech.net/latest/status/?datasource=tranquility")
-            print(ut.text)
+    elif ShIn == "server":
+        ut = requests.get("https://esi.evetech.net/latest/status/?datasource=tranquility")
+        print(ut.text)
 
-        elif ShIn == "WhoIs":
-            mods.WhoIs()
+    elif ShIn == "WhoIs":
+        mods.WhoIs()
 
-        elif ShIn == "ping":
-            mods.ping()
+    elif ShIn == "ping":
+        mods.ping()
 
-        elif ShIn == "zkb":
-            mods.zkb()
+    elif ShIn == "zkb":
+        mods.zkb()
 
-        elif ShIn == "sh":
-            mods.sh()
+    elif ShIn == "sh":
+        mods.sh()
 
-        elif ShIn == "dev":
-            devmode = True
-            print("Developer mode enabled,"
-                "try unstable features at your own risk")
-            ShWelcome = "EVE-Term >>"
+    elif ShIn == "dev":
+        devmode = True
+        print("Developer mode enabled,"
+            "try unstable features at your own risk")
+        ShWelcome = "EVE-Term >>"
 
-    #history
-    #still a work in progress
+#history
+#still a work in progress
 
-        elif ShIn == "history":
-            print(VARhistoryHELP)
+    elif ShIn == "history":
+        print(VARhistoryHELP)
 
-        elif ShIn == "history -e" and devmode == True:
-            ListHistory = True
-        elif ShIn == "history -I" and devmode == True:
-            mods.HistInit()
-        elif ShIn == "history -l" and devmode == True:
-            historyLIST()
-        elif ShIn == "history -c" and devmode == True:
-            os.system("echo [START] > ~/.EVEterm/history")
-        elif ShIn == "history -d" and devmode == True:
-            ListHistory = False
+    elif ShIn == "history -e" and devmode == True:
+        ListHistory = True
+    elif ShIn == "history -I" and devmode == True:
+        mods.HistInit()
+    elif ShIn == "history -l" and devmode == True:
+        historyLIST()
+    elif ShIn == "history -c" and devmode == True:
+        os.system("echo [START] > ~/.EVEterm/history")
+    elif ShIn == "history -d" and devmode == True:
+        ListHistory = False
 
-        elif ShIn == "^[[A" and devmode == True:
-            os.system("cat ~/.EVEterm/history | awk'END{print}'")
+    elif ShIn == "^[[A" and devmode == True:
+        os.system("cat ~/.EVEterm/history | awk'END{print}'")
 
-    #config options
-    #still a work in progress
+#config options
+#still a work in progress
 
-        elif ShIn == "config" and devmode == True:
-            print(ConfigHelp)
-        elif ShIn == "config -i" and devmode == True:
-            #placeholder
-            dummy = 1
-        elif ShIn == "config -a" and devmode == True:
-            ConfigAddIn = input("what would you like to run on startup?")
-            ConfigAddCmd = "echo {} >> config.py"
-            ConfigAddCmd = ConfigAddCmd.format(ConfigAddIn)
-            os.system(ConfigAddCmd)
-        elif ShIn == "config -l" and devmode == True:
-            os.system("cat config.py")
+    elif ShIn == "config" and devmode == True:
+        print(ConfigHelp)
+    elif ShIn == "config -i" and devmode == True:
+        #placeholder
+        dummy = 1
+    elif ShIn == "config -a" and devmode == True:
+        ConfigAddIn = input("what would you like to run on startup?")
+        ConfigAddCmd = "echo {} >> config.py"
+        ConfigAddCmd = ConfigAddCmd.format(ConfigAddIn)
+        os.system(ConfigAddCmd)
+    elif ShIn == "config -l" and devmode == True:
+        os.system("cat config.py")
 
-        #AUTH FLOW
-        #DANGER: UNSTABLE
+    #AUTH FLOW
+    #DANGER: UNSTABLE
 
-        elif ShIn == "auth":
-            if devmode == True:
-                auth()
-            elif devmode == False:
-                zzz(0)
+    elif ShIn == "auth":
+        if devmode == True:
+            calls.auth()
 
+#Exit loops
+    elif ShIn == "esc":
+        break
+    elif ShIn == "exit":
+        break
+    elif ShIn == "quit":
+        break
+    elif ShIn == None:
+        mods.null()
 
+    elif ShIn == "":
+        mods.null()
 
-    #Exit loops
-        elif ShIn == "esc":
-            break
-        elif ShIn == "exit":
-            break
-        elif ShIn == "quit":
-            break
-        elif ShIn == None:
-            mods.null()
+    elif ShIn == "" and devmode == True:
+        print("Have you tried typing anything? That might solve whatever bug you are working on :) ")
 
-
-        #I don't know why this is buggy. It just is. EDIT: not longer buggy!
-        else:
-            cnf = cnf.format(ShIn)
-            print(cnf)
+    #I don't know why this is buggy. It just is. EDIT: not longer buggy!
+    else:
+        cnf = cnf.format(ShIn)
+        print(cnf)
 
 print("exiting shell...")
 zzz(0.1)
 exit()
-
