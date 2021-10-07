@@ -9,6 +9,15 @@ version = "0.0.1"
 full_version = "EVEterm 0.0.1 Pre-Alpha"
 long_version = "EVEterm 0.0.1 Pre-Alpha \"Buggy testing hellscape\""
 
+security = EsiSecurity(
+    headers={'User-Agent': full_version},
+    redirect_uri='http://localhost/callback',
+    client_id='a2c6fb5fa9a3400b81eef46ea8b9c980',
+    code_verifier=generate_code_verifier(),
+)
+client = EsiClient(security=security,
+                   headers={'User-Agent': full_version}, )
+
 
 def auth():
     # creating the security object using the app
@@ -32,7 +41,7 @@ def auth():
     webbrowser.open_new_tab(eve_sso_auth_url)
 
     code_param = input("Enter the code parameter here")
-    tokens = EsiSecurity().auth(redirect_uri=eve_sso_auth_url, client_id='a2c6fb5fa9a3400b81eef46ea8b9c980')
+    tokens = security.auth(code_param)
     print(tokens)
 
     # tokens is actually a json objects with these values:
@@ -42,5 +51,10 @@ def auth():
     #     "expires_in":1200,
     #     "refresh_token":"gEy...fM0"
     # }
-    EsiSecurity().verify()
+    security.verify()
     # This gives you some JSON object with a lot of info
+
+# TODO: this
+
+# def verify():
+# print(security.verify())
