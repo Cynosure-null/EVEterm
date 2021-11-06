@@ -56,5 +56,9 @@ def auth():
 
 # TODO: this
 
-# def verify():
-# print(security.verify())
+def verify():
+    try:
+        print(security.verify())
+    except:
+        print("That didn't work. Are you logged in?")
+

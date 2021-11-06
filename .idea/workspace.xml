@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca03e3c6-f488-478a-ace5-ec966f7a35b2" name="Changes" comment="###Quick Summary. Keep it short.&#10;&#10;##Basic info:&#10;##Fixed Issue #{number}: {description}&#10;##The following files were changed&#10;##{changed files}&#10;&#10;##Detailed info&#10;##Talk about what exactly you did&#10;##72 chars max&#10;&#10;#What problem did you solve&#10;#You can ramble&#10;&#10;#    -now is where you can make some bullet point notes&#10;&#10;#    -just quick notes&#10;&#10;#Resolves: #{Issue number}&#10;#See also: #{related issue}, #{another related issue}&#10;&#10;-- Commit made by Jeff Bezos Stonerbot (AKA cynosure or Cynosure-NUL) &lt;cynosure@disroot.org)&#10;My PGP key can be found at https://cynosure.neocities.org/about&#10;Fly safe">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/calls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/calls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
